@@ -213,7 +213,7 @@ export const useRealTime = (
 
   useEffect(() => {
     pusherClient.subscribe(chatRoom)
-    pusherClient.bind('realtime-mode', (data: any) => {
+    pusherClient.bind('my-event', (data: any) => {
       console.log('✅', data)
       if (counterRef.current !== 1) {
         setChats((prev: any) => [
@@ -227,7 +227,7 @@ export const useRealTime = (
       counterRef.current += 1
     })
     return () => {
-      pusherClient.unbind('realtime-mode')
+      pusherClient.unbind('my-event')
       pusherClient.unsubscribe(chatRoom)
     }
   }, [])

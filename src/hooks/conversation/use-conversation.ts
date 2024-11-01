@@ -138,12 +138,12 @@ export const useChatWindow = () => {
   useEffect(() => {
     if (chatRoom) {
       pusherClient.subscribe(chatRoom)
-      pusherClient.bind('realtime-mode', (data: any) => {
+      pusherClient.bind('my-event', (data: any) => {
         setChats((prev) => [...prev, data.chat])
       })
 
       return () => {
-        pusherClient.unbind('realtime-mode')
+        pusherClient.unbind('my-event')
         pusherClient.unsubscribe(chatRoom)
       }
     }

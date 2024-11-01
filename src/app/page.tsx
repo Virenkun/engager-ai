@@ -19,16 +19,16 @@ import { getMonthName } from "@/lib/utils";
 import Footer from "@/components/footer";
 
 export default async function Home() {
-  const posts:
-    | {
-        id: string;
-        title: string;
-        image: string;
-        content: string;
-        createdAt: Date;
-      }[]
-    | undefined = await onGetBlogPosts();
-  console.log(posts);
+  // const posts:
+  //   | {
+  //       id: string;
+  //       title: string;
+  //       image: string;
+  //       content: string;
+  //       createdAt: Date;
+  //     }[]
+  //   | undefined = await onGetBlogPosts();
+  // console.log(posts);
   return (
     <div>
       <main>
@@ -116,7 +116,7 @@ export default async function Home() {
             business.
           </p>
         </section>
-        <section className="md:grid-cols-3 grid-cols-1 grid gap-5 container mt-8">
+        {/* <section className="md:grid-cols-3 grid-cols-1 grid gap-5 container mt-8">
           {posts &&
             posts.map((post) => (
               <Link href={`/blogs/${post.id}`} key={post.id}>
@@ -139,7 +139,7 @@ export default async function Home() {
                 </Card>
               </Link>
             ))}
-        </section>
+        </section> */}
       </main>
       <Footer />
     </div>
