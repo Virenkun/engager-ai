@@ -1,4 +1,4 @@
-import { onGetCurrentDomainInfo } from '@/actions/settings'
+import { onGetCurrentDomainInfo } from '@/services/settings'
 import BotTrainingForm from '@/components/forms/settings/bot-training'
 import SettingsForm from '@/components/forms/settings/form'
 import InfoBar from '@/components/infobar'

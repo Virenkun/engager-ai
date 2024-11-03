@@ -4,6 +4,8 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider } from '@/context/them-provider'
+import { dark } from '@clerk/themes'
+
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
@@ -17,8 +19,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+
+//  const auth = currentUser()
+//   console.log("auth", auth)
+  // if(userId){
+  //   return redirect('/dashboard');
+  // }
   return (
-    <ClerkProvider>
+    <ClerkProvider
+    >
       <html lang="en">
         <body className={jakarta.className}>
           <ThemeProvider

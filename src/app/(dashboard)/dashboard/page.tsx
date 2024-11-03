@@ -1,11 +1,11 @@
-import { getUserAppointments } from '@/actions/appointment'
+import { getUserAppointments } from '@/services/appointment'
 import {
   getUserBalance,
   getUserClients,
   getUserPlanInfo,
   getUserTotalProductPrices,
   getUserTransactions,
-} from '@/actions/dashboard'
+} from '@/services/dashboard'
 import DashboardCard from '@/components/dashboard/cards'
 import { PlanUsage } from '@/components/dashboard/plan-usage'
 import InfoBar from '@/components/infobar'
@@ -16,6 +16,11 @@ import PersonIcon from '@/icons/person-icon'
 import { TransactionsIcon } from '@/icons/transactions-icon'
 import { DollarSign } from 'lucide-react'
 import React from 'react'
+import { BookUser } from 'lucide-react';
+import { CircleDollarSign } from 'lucide-react';
+import { CalendarClock } from 'lucide-react';
+import { Banknote } from 'lucide-react';
+import { Wallet } from 'lucide-react';
 
 type Props = {}
 
@@ -35,34 +40,36 @@ const Page = async (props: Props) => {
           <DashboardCard
             value={clients || 0}
             title="Potential Clients"
-            icon={<PersonIcon />}
+            icon={<BookUser />}
           />
           <DashboardCard
             value={products! * clients! || 0}
             sales
             title="Pipline Value"
-            icon={<DollarSign />}
+            icon={<CircleDollarSign />}
           />
           <DashboardCard
             value={bookings || 0}
             title="Appointments"
-            icon={<CalIcon />}
+            icon={<CalendarClock />}
           />
           <DashboardCard
             value={sales || 0}
             sales
             title="Total Sales"
-            icon={<DollarSign />}
+            icon={<CircleDollarSign />}
           />
         </div>
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 py-10">
+        <div className="w-[96%] grid grid-cols-1 lg:grid-cols-2 py-10">
           <div>
-            <div>
+            <div className='flex items-center gap-2'>
+              <Banknote />
               <h2 className="font-bold text-2xl">Plan Usage</h2>
-              <p className="text-sm font-light">
+             
+            </div>
+            <p className="text-sm font-light">
                 A detailed overview of your metrics, usage, customers and more
               </p>
-            </div>
             <PlanUsage
               plan={plan?.plan!}
               credits={plan?.credits || 0}
@@ -73,7 +80,7 @@ const Page = async (props: Props) => {
           <div className="flex flex-col">
             <div className="w-full flex justify-between items-start mb-5">
               <div className="flex gap-3 items-center">
-                <TransactionsIcon />
+                <Wallet />
                 <p className="font-bold">Recent Transactions</p>
               </div>
               <p className="text-sm">See more</p>

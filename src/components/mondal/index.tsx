@@ -33,23 +33,25 @@ const Modal = ({
         <Dialog>
           <DialogTrigger asChild>{trigger}</DialogTrigger>
           <DialogContent>
-            <div className="flex justify-center gap-3">
-              <div className="w-12 h-12 relative">
+            <div className="flex justify-center">
+              <div className="relative mr-3">
                 <Image
-                  src={`https://ucarecdn.com/2c9bd4ab-1f00-41df-bad2-df668f65a232/`}
-                  fill
-                  alt="Corinna"
+                  src='/images/logo-ai.png'
+                  width={40}
+                  height={40}
+                  alt="Engager"
                 />
               </div>
               <div className="text-gray-400">
                 <ArrowLeft size={20} />
                 <ArrowRight size={20} />
               </div>
-              <div className="w-12 h-12 relative">
+              <div className="relative">
                 <Image
-                  src={`https://ucarecdn.com/${logo}/`}
-                  fill
+                  src='/images/stripe-main.svg'
                   alt="Stripe"
+                  width={90}
+                  height={90}
                 />
               </div>
             </div>

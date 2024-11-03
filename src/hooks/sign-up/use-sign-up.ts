@@ -9,7 +9,7 @@ import { useSignUp } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { onCompleteUserRegistration } from '@/actions/auth'
+import { onCompleteUserRegistration } from '@/services/auth'
 
 export const useSignUpForm = () => {
   const { toast } = useToast()

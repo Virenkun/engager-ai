@@ -1,4 +1,4 @@
-import { onGetAllCampaigns, onGetAllCustomers } from '@/actions/mail'
+import { onGetAllCampaigns, onGetAllCustomers } from '@/services/mail'
 import EmailMarketing from '@/components/email-marketing'
 import InfoBar from '@/components/infobar'
 import { currentUser } from '@clerk/nextjs'

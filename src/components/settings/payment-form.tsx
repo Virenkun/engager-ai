@@ -19,11 +19,11 @@ export const PaymentForm = ({ plan }: PaymentFormProps) => {
       className="flex flex-col gap-5"
     >
       <div>
-        <h2 className="font-semibold text-xl text-black">Payment Method</h2>
+        <h2 className="font-semibold text-xl text-black dark:text-white">Payment Method</h2>
         <CardDescription>Enter your card details</CardDescription>
       </div>
-      <PaymentElement />
-      <Button type="submit">
+      <PaymentElement className='text-black dark:text-white' />
+      <Button type="submit" className='bg-violet-700 hover:bg-violet-800 text-white font-semibold'>
         <Loader loading={processing}>Pay</Loader>
       </Button>
     </form>

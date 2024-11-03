@@ -1,4 +1,5 @@
-import { onGetBlogPosts } from "@/actions/landing";
+"use client";
+import { onGetBlogPosts } from "@/services/landing";
 import NavBar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,8 +18,21 @@ import Link from "next/link";
 import parse from "html-react-parser";
 import { getMonthName } from "@/lib/utils";
 import Footer from "@/components/footer";
+import { useAuth } from "@clerk/nextjs";
+import { use, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default async function Home() {
+export default function Home() {
+  const { isLoaded, userId, sessionId, getToken } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (userId) {
+      router.push("/dashboard");
+    }
+  }, [userId]);
+  // console.log("userId", userId);
+
   // const posts:
   //   | {
   //       id: string;

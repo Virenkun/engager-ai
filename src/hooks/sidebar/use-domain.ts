@@ -1,5 +1,5 @@
 
-import { onIntegrateDomain } from '@/actions/settings'
+import { onIntegrateDomain } from '@/services/settings'
 import { useToast } from '@/components/ui/use-toast'
 import { AddDomainSchema } from '@/schemas/settings.schema'
 import { zodResolver } from '@hookform/resolvers/zod'

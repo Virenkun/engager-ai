@@ -8,6 +8,19 @@ import SettingsIcon from "@/icons/settings-icon";
 import StarIcon from "@/icons/star-icon";
 import TimerIcon from "@/icons/timer-icon";
 import Image from "next/image";
+import { LayoutDashboard } from 'lucide-react';
+import { MessagesSquare } from 'lucide-react';
+import { PackagePlus } from 'lucide-react';
+import { Settings } from 'lucide-react';
+import { CalendarCheck } from 'lucide-react';
+import { MailCheck } from 'lucide-react';
+import { MailPlus } from 'lucide-react';
+import { Mails } from 'lucide-react';
+import { CalendarX2 } from 'lucide-react';
+import { Star } from 'lucide-react';
+
+
+
 
 type SIDE_BAR_MENU_PROPS = {
   label: string;
@@ -18,32 +31,33 @@ type SIDE_BAR_MENU_PROPS = {
 export const SIDE_BAR_MENU: SIDE_BAR_MENU_PROPS[] = [
   {
     label: "Dashboard",
-    icon: <DashboardIcon />,
+    // icon: <Image src="/images/dashboard.png" alt="dashboard" width={20} height={20} />,
+    icon: <LayoutDashboard />,
     path: "dashboard",
   },
   {
     label: "Conversations",
-    icon: <ChatIcon />,
+    icon: <MessagesSquare />,
     path: "conversation",
   },
   {
     label: "Integrations",
-    icon: <IntegrationsIcon />,
+    icon: <PackagePlus />,
     path: "integration",
   },
   {
     label: "Settings",
-    icon: <SettingsIcon />,
+    icon: <Settings />,
     path: "settings",
   },
   {
     label: "Appointments",
-    icon: <CalIcon />,
+    icon: <CalendarCheck />,
     path: "appointment",
   },
   {
     label: "Email Marketing",
-    icon: <EmailIcon />,
+    icon: <MailCheck />,
     path: "email-marketing",
   },
 ];
@@ -56,19 +70,19 @@ type TABS_MENU_PROPS = {
 export const TABS_MENU: TABS_MENU_PROPS[] = [
   {
     label: "unread",
-    icon: <EmailIcon />,
+    icon: <MailPlus />,
   },
   {
     label: "all",
-    icon: <EmailIcon />,
+    icon: <Mails />,
   },
   {
     label: "expired",
-    icon: <TimerIcon />,
+    icon: <CalendarX2 />,
   },
   {
     label: "starred",
-    icon: <StarIcon />,
+    icon: <Star />,
   },
 ];
 

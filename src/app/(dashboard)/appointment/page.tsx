@@ -1,4 +1,4 @@
-import { onGetAllBookingsForCurrentUser } from '@/actions/appointment'
+import { onGetAllBookingsForCurrentUser } from '@/services/appointment'
 import AllAppointments from '@/components/appointment/all-appointments'
 import InfoBar from '@/components/infobar'
 import Section from '@/components/section-label'

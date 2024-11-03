@@ -1,7 +1,7 @@
 import {
   onDomainCustomerResponses,
   onGetAllDomainBookings,
-} from '@/actions/appointment'
+} from '@/services/appointment'
 import PortalForm from '@/components/forms/portal/portal-form'
 import React from 'react'
 

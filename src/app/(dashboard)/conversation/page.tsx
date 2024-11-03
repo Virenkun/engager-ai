@@ -1,4 +1,4 @@
-import { onGetAllAccountDomains } from '@/actions/settings'
+import { onGetAllAccountDomains } from '@/services/settings'
 import ConversationMenu from '@/components/conversations'
 import Messenger from '@/components/conversations/messenger'
 import InfoBar from '@/components/infobar'

@@ -5,7 +5,7 @@ import {
   onGetAllCustomerResponses,
   onGetEmailTemplate,
   onSaveEmailTemplate,
-} from '@/actions/mail'
+} from '@/services/mail'
 import { useToast } from '@/components/ui/use-toast'
 import {
   EmailMarketingBodySchema,

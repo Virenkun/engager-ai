@@ -9,7 +9,7 @@ import {
   onUpdateDomain,
   onUpdatePassword,
   onUpdateWelcomeMessage,
-} from '@/actions/settings'
+} from '@/services/settings'
 import { useToast } from '@/components/ui/use-toast'
 import {
   ChangePasswordProps,

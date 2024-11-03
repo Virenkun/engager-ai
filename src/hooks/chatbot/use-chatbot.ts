@@ -1,4 +1,4 @@
-import { onAiChatBotAssistant, onGetCurrentChatBot } from '@/actions/bot'
+import { onAiChatBotAssistant, onGetCurrentChatBot } from '@/services/bot'
 import { postToParent, pusherClient } from '@/lib/utils'
 import {
   ChatBotMessageProps,

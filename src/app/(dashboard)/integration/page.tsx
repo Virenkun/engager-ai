@@ -1,4 +1,4 @@
-import { onGetPaymentConnected } from '@/actions/settings'
+import { onGetPaymentConnected } from '@/services/settings'
 import InfoBar from '@/components/infobar'
 import IntegrationsList from '@/components/integrations'
 

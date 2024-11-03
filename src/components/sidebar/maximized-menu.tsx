@@ -23,18 +23,21 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
   return (
     <div className="py-3 px-4 flex flex-col h-full">
       <div className="flex justify-between items-center">
+      <div className="flex gap-2 justify-center self-stretch my-auto text-2xl tracking-tighter text-neutral-700 dark:text-white">
         <Image
-          src="/images/logo.png"
+          src="/images/logo-ai.png"
           alt="LOGO"
           sizes="100vw"
-          className="animate-fade-in opacity-0 delay-300 fill-mode-forwards"
           style={{
-            width: '50%',
+            width: '30px',
             height: 'auto',
+            margin: '0px 6px',
           }}
           width={0}
           height={0}
         />
+        <span className='font-bold'>Prosper AI</span>
+      </div>
         <Menu
           className="cursor-pointer animate-fade-in opacity-0 delay-300 fill-mode-forwards"
           onClick={onExpand}

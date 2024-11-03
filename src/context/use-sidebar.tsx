@@ -4,11 +4,11 @@ import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useChatContext } from './user-chat-context'
-import { onGetConversationMode, onToggleRealtime } from '@/actions/conversation'
+import { onGetConversationMode, onToggleRealtime } from '@/services/conversation'
 import { useClerk } from '@clerk/nextjs'
 
 const useSideBar = () => {
-  const [expand, setExpand] = useState<boolean | undefined>(undefined)
+  const [expand, setExpand] = useState<boolean | undefined>(true)
   const router = useRouter()
   const pathname = usePathname()
   const { toast } = useToast()

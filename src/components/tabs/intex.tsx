@@ -27,6 +27,7 @@ const TabsMenu = ({ triggers, children, className, button }: Props) => {
           >
             {trigger.icon && trigger.icon}
             {trigger.label}
+  
           </TabsTrigger>
         ))}
         {button}
