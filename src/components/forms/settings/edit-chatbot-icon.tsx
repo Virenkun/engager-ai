@@ -34,9 +34,9 @@ const EditChatbotIcon = ({ register, errors, chatBot }: Props) => {
           />
         </div>
       ) : (
-        <div className="rounded-full cursor-pointer shadow-md w-20 h-20 flex items-center justify-center bg-grandis">
+        <div className="rounded-full cursor-pointer shadow-md w-20 h-20 flex items-center justify-center bg-transparent">
           <Image
-            src={`https://ucarecdn.com/${chatBot.icon}/`}
+            src={`/images/chat-bot-ai.png`}
             alt="bot"
             width={80}
             height={80}

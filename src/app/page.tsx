@@ -53,10 +53,10 @@ export default function Home() {
               Turn Conversations into Conversions with ProsperAI.
             </span>
             <div className="text-8xl font-bold text-violet-950 dark:text-white">
-              Prosper AI
+              Engager AI
             </div>
             <p className="text-center max-w-[500px]">
-              ProsperAI is an AI-powered sales platform designed to streamline
+              Engager AI is an AI-powered sales platform designed to streamline
               outreach, nurture leads, and drive revenue growth by turning every
               interaction into a strategic opportunity.
             </p>
@@ -89,7 +89,7 @@ export default function Home() {
               })}
             >
               <CardHeader>
-                <CardTitle className="text-violet-950">{card.title}</CardTitle>
+                <CardTitle className="text-violet-600">{card.title}</CardTitle>
                 <CardDescription>
                   {
                     pricingCards.find((c) => c.title === card.title)

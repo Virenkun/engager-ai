@@ -1,8 +1,8 @@
-import Image from 'next/image'
-import * as React from 'react'
-import Link from 'next/link'
-import { ThemeToggle } from '@/themes/theme-toggle'
-import { NavigationItems } from './navigation-items'
+import Image from "next/image";
+import * as React from "react";
+import Link from "next/link";
+import { ThemeToggle } from "@/themes/theme-toggle";
+import { NavigationItems } from "./navigation-items";
 
 function NavBar() {
   return (
@@ -13,17 +13,17 @@ function NavBar() {
           alt="LOGO"
           sizes="100vw"
           style={{
-            width: '30px',
-            height: 'auto',
-            margin: '0px 6px',
+            width: "30px",
+            height: "auto",
+            margin: "0px 6px",
           }}
           width={0}
           height={0}
         />
-        <span>Prosper AI</span>
+        <span>Engager AI</span>
       </div>
       <NavigationItems />
-      <div className='flex items-center justify-center gap-4'>
+      <div className="flex items-center justify-center gap-4">
         <ThemeToggle />
         <Link
           href="/dashboard"
@@ -33,7 +33,7 @@ function NavBar() {
         </Link>
       </div>
     </div>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;
