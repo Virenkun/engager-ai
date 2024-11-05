@@ -1,26 +1,17 @@
-import CalIcon from "@/icons/cal-icon";
-import ChatIcon from "@/icons/chat-icon";
-import DashboardIcon from "@/icons/dashboard-icon";
-import EmailIcon from "@/icons/email-icon";
 import HelpDeskIcon from "@/icons/help-desk-icon";
-import IntegrationsIcon from "@/icons/integrations-icon";
-import SettingsIcon from "@/icons/settings-icon";
-import StarIcon from "@/icons/star-icon";
-import TimerIcon from "@/icons/timer-icon";
 import Image from "next/image";
-import { LayoutDashboard } from 'lucide-react';
-import { MessagesSquare } from 'lucide-react';
-import { PackagePlus } from 'lucide-react';
-import { Settings } from 'lucide-react';
-import { CalendarCheck } from 'lucide-react';
-import { MailCheck } from 'lucide-react';
-import { MailPlus } from 'lucide-react';
-import { Mails } from 'lucide-react';
-import { CalendarX2 } from 'lucide-react';
-import { Star } from 'lucide-react';
-
-
-
+import {
+  LayoutDashboard,
+  MessagesSquare,
+  PackagePlus,
+  Settings,
+  CalendarCheck,
+  MailCheck,
+  MailPlus,
+  Mails,
+  CalendarX2,
+  Star,
+} from "lucide-react";
 
 type SIDE_BAR_MENU_PROPS = {
   label: string;
@@ -31,7 +22,6 @@ type SIDE_BAR_MENU_PROPS = {
 export const SIDE_BAR_MENU: SIDE_BAR_MENU_PROPS[] = [
   {
     label: "Dashboard",
-    // icon: <Image src="/images/dashboard.png" alt="dashboard" width={20} height={20} />,
     icon: <LayoutDashboard />,
     path: "dashboard",
   },
@@ -69,29 +59,29 @@ type TABS_MENU_PROPS = {
 
 export const TABS_MENU: TABS_MENU_PROPS[] = [
   {
-    label: "unread",
+    label: "Unread",
     icon: <MailPlus />,
   },
   {
-    label: "all",
+    label: "All",
     icon: <Mails />,
   },
   {
-    label: "expired",
+    label: "Expired",
     icon: <CalendarX2 />,
   },
   {
-    label: "starred",
+    label: "Starred",
     icon: <Star />,
   },
 ];
 
 export const HELP_DESK_TABS_MENU: TABS_MENU_PROPS[] = [
   {
-    label: "help desk",
+    label: "Help Desk",
   },
   {
-    label: "questions",
+    label: "Questions",
   },
 ];
 
@@ -106,11 +96,13 @@ export const EMAIL_MARKETING_HEADER = ["Id", "Email", "Answers", "Domain"];
 
 export const BOT_TABS_MENU: TABS_MENU_PROPS[] = [
   {
-    label: "chat",
-    icon: <Image src="/images/chat-bot.png" alt="chat" width={20} height={20} />,
+    label: "Chat",
+    icon: (
+      <Image src="/images/chat-bot.png" alt="chat" width={20} height={20} />
+    ),
   },
   {
-    label: "helpdesk",
+    label: "Helpdesk",
     icon: <HelpDeskIcon />,
   },
 ];
