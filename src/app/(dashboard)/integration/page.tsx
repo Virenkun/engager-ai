@@ -1,20 +1,27 @@
-import { onGetPaymentConnected } from '@/services/settings'
-import InfoBar from '@/components/infobar'
-import IntegrationsList from '@/components/integrations'
+"use client";
+import { onGetPaymentConnected } from "@/services/settings";
+import InfoBar from "@/components/infobar";
+import IntegrationsList from "@/components/integrations";
 
-const IntegrationsPage = async () => {
-  const payment = await onGetPaymentConnected()
+import { useEffect, useState } from "react";
 
-  const connections = {
-    stripe: payment ? true : false,
-  }
+const IntegrationsPage = () => {
+  const [connections, setConnections] = useState({ stripe: false });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const payment = await onGetPaymentConnected();
+      setConnections({ stripe: payment ? true : false });
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
       <InfoBar />
       <IntegrationsList connections={connections} />
     </>
-  )
-}
+  );
+};
 
-export default IntegrationsPage
+export default IntegrationsPage;

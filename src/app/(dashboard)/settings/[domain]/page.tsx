@@ -1,16 +1,33 @@
-import { onGetCurrentDomainInfo } from '@/services/settings'
-import BotTrainingForm from '@/components/forms/settings/bot-training'
-import SettingsForm from '@/components/forms/settings/form'
-import InfoBar from '@/components/infobar'
-import ProductTable from '@/components/products'
-import { redirect } from 'next/navigation'
-import React from 'react'
+"use client";
+import { onGetCurrentDomainInfo } from "@/services/settings";
+import BotTrainingForm from "@/components/forms/settings/bot-training";
+import SettingsForm from "@/components/forms/settings/form";
+import InfoBar from "@/components/infobar";
+import ProductTable from "@/components/products";
+import { redirect } from "next/navigation";
+import React, { useEffect } from "react";
 
-type Props = { params: { domain: string } }
+type Props = { params: { domain: string } };
 
-const DomainSettingsPage = async ({ params }: Props) => {
-  const domain = await onGetCurrentDomainInfo(params.domain)
-  if (!domain) redirect('/dashboard')
+const DomainSettingsPage = ({ params }: Props) => {
+  const [domain, setDomain] = React.useState<any>(null);
+
+  useEffect(() => {
+    const fetchDomainInfo = async () => {
+      const domainInfo = await onGetCurrentDomainInfo(params.domain);
+      if (!domainInfo) {
+        redirect("/dashboard");
+      } else {
+        setDomain(domainInfo);
+      }
+    };
+
+    fetchDomainInfo();
+  }, [params.domain]);
+
+  if (!domain) {
+    return null;
+  }
 
   return (
     <>
@@ -29,7 +46,7 @@ const DomainSettingsPage = async ({ params }: Props) => {
         />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default DomainSettingsPage
+export default DomainSettingsPage;

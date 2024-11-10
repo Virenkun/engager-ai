@@ -1,36 +1,56 @@
-import { getUserAppointments } from '@/services/appointment'
+"use client";
+import { getUserAppointments } from "@/services/appointment";
 import {
   getUserBalance,
   getUserClients,
   getUserPlanInfo,
   getUserTotalProductPrices,
   getUserTransactions,
-} from '@/services/dashboard'
-import DashboardCard from '@/components/dashboard/cards'
-import { PlanUsage } from '@/components/dashboard/plan-usage'
-import InfoBar from '@/components/infobar'
-import { Separator } from '@/components/ui/separator'
-import CalIcon from '@/icons/cal-icon'
-import EmailIcon from '@/icons/email-icon'
-import PersonIcon from '@/icons/person-icon'
-import { TransactionsIcon } from '@/icons/transactions-icon'
-import { DollarSign } from 'lucide-react'
-import React from 'react'
-import { BookUser } from 'lucide-react';
-import { CircleDollarSign } from 'lucide-react';
-import { CalendarClock } from 'lucide-react';
-import { Banknote } from 'lucide-react';
-import { Wallet } from 'lucide-react';
+} from "@/services/dashboard";
+import DashboardCard from "@/components/dashboard/cards";
+import { PlanUsage } from "@/components/dashboard/plan-usage";
+import InfoBar from "@/components/infobar";
+import { Separator } from "@/components/ui/separator";
+import CalIcon from "@/icons/cal-icon";
+import EmailIcon from "@/icons/email-icon";
+import PersonIcon from "@/icons/person-icon";
+import { TransactionsIcon } from "@/icons/transactions-icon";
+import { DollarSign } from "lucide-react";
+import React, { useEffect } from "react";
+import { BookUser } from "lucide-react";
+import { CircleDollarSign } from "lucide-react";
+import { CalendarClock } from "lucide-react";
+import { Banknote } from "lucide-react";
+import { Wallet } from "lucide-react";
 
-type Props = {}
+type Props = {};
 
-const Page = async (props: Props) => {
-  const clients = await getUserClients()
-  const sales = await getUserBalance()
-  const bookings = await getUserAppointments()
-  const plan = await getUserPlanInfo()
-  const transactions = await getUserTransactions()
-  const products = await getUserTotalProductPrices()
+const Page = (props: Props) => {
+  const [clients, setClients] = React.useState<number | null>(null);
+  const [sales, setSales] = React.useState<number | null>(null);
+  const [bookings, setBookings] = React.useState<number | null>(null);
+  const [plan, setPlan] = React.useState<any>(null);
+  const [transactions, setTransactions] = React.useState<any>(null);
+  const [products, setProducts] = React.useState<number | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const clients = (await getUserClients()) ?? 0;
+      const sales = (await getUserBalance()) ?? 0;
+      const bookings = (await getUserAppointments()) ?? 0;
+      const plan = (await getUserPlanInfo()) ?? {};
+      const transactions = (await getUserTransactions()) ?? { data: [] };
+      const products = (await getUserTotalProductPrices()) ?? 0;
+
+      setClients(clients);
+      setSales(sales);
+      setBookings(bookings);
+      setPlan(plan);
+      setTransactions(transactions);
+      setProducts(products);
+    }
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -62,14 +82,13 @@ const Page = async (props: Props) => {
         </div>
         <div className="w-[96%] grid grid-cols-1 lg:grid-cols-2 py-10">
           <div>
-            <div className='flex items-center gap-2'>
+            <div className="flex items-center gap-2">
               <Banknote />
               <h2 className="font-bold text-2xl">Plan Usage</h2>
-             
             </div>
             <p className="text-sm font-light">
-                A detailed overview of your metrics, usage, customers and more
-              </p>
+              A detailed overview of your metrics, usage, customers and more
+            </p>
             <PlanUsage
               plan={plan?.plan!}
               credits={plan?.credits || 0}
@@ -87,24 +106,43 @@ const Page = async (props: Props) => {
             </div>
             <Separator orientation="horizontal" />
             {transactions &&
-              transactions.data.map((transaction) => (
-                <div
-                  className="flex gap-3 w-full justify-between items-center border-b-2 py-5"
-                  key={transaction.id}
-                >
-                  <p className="font-bold">
-                    {transaction.calculated_statement_descriptor}
-                  </p>
-                  <p className="font-bold text-xl">
-                    ${transaction.amount / 100}
-                  </p>
-                </div>
-              ))}
+              transactions.data.map(
+                (transaction: {
+                  id: React.Key | null | undefined;
+                  calculated_statement_descriptor:
+                    | string
+                    | number
+                    | bigint
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | Iterable<React.ReactNode>
+                    | React.ReactPortal
+                    | Promise<React.AwaitedReactNode>
+                    | null
+                    | undefined;
+                  amount: number;
+                }) => (
+                  <div
+                    className="flex gap-3 w-full justify-between items-center border-b-2 py-5"
+                    key={transaction.id}
+                  >
+                    <p className="font-bold">
+                      {transaction.calculated_statement_descriptor}
+                    </p>
+                    <p className="font-bold text-xl">
+                      ${transaction.amount / 100}
+                    </p>
+                  </div>
+                )
+              )}
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

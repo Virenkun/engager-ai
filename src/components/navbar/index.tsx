@@ -23,8 +23,9 @@ function NavBar() {
         <span>Engager AI</span>
       </div>
       <NavigationItems />
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center justify-center gap-6">
         <ThemeToggle />
+        <button>Log In</button>
         <Link
           href="/dashboard"
           className="bg-violet-700 px-4 py-2 rounded-sm text-white font-medium"

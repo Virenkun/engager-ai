@@ -21,6 +21,9 @@ import Footer from "@/components/footer";
 import { useAuth } from "@clerk/nextjs";
 import { use, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { Vortex } from "@/components/ui/vortex";
+import { companies } from "@/constants/companies";
+import { FeaturesSection } from "@/components/hero/features-section";
 
 export default function Home() {
   const { isLoaded, userId, sessionId, getToken } = useAuth();
@@ -47,20 +50,30 @@ export default function Home() {
     <div>
       <main>
         <NavBar />
+        {/* <Vortex
+          backgroundColor="transparent"
+          className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-90vh"
+        > */}
         <section>
           <div className="flex items-center justify-center flex-col mt-[80px] gap-4 ">
-            <span className="text-white bg-violet-800 px-4 py-2 rounded-full text-sm">
-              Turn Conversations into Conversions with ProsperAI.
-            </span>
+            {/* <span className="text-white bg-violet-800 px-4 py-2 rounded-full text-sm">
+                Turn Conversations into Conversions with ProsperAI.
+              </span> */}
+            <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[2px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 mb-3">
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full dark:bg-slate-950 bg-white px-4 py-1 text-sm font-medium dark:text-white text-black backdrop-blur-3xl">
+                Turn Conversations into Conversions with ProsperAI
+              </span>
+            </button>
             <div className="text-8xl font-bold text-violet-950 dark:text-white">
               Engager AI
             </div>
-            <p className="text-center max-w-[500px]">
+            <p className="text-center max-w-[500px] mb-4">
               Engager AI is an AI-powered sales platform designed to streamline
               outreach, nurture leads, and drive revenue growth by turning every
               interaction into a strategic opportunity.
             </p>
-            <Button className="bg-violet-800 text-white px-4 font-medium hover:bg-violet-950">
+            <Button className="bg-violet-700 text-white px-4 font-medium hover:bg-violet-800 mb-3">
               Start For Free
             </Button>
             <Image
@@ -72,14 +85,19 @@ export default function Home() {
             />
           </div>
         </section>
+
         <section className="flex justify-center items-center flex-col gap-4 mt-10">
-          <h2 className="text-4xl text-center"> Choose what fits you right</h2>
+          <h2 className="text-4xl text-center font-bold">
+            {" "}
+            Choose what fits you right
+          </h2>
           <p className="text-muted-foreground text-center max-w-lg">
             Our straightforward pricing plans are tailored to meet your needs.
             If
             {" you're"} not ready to commit you can get started for free.
           </p>
         </section>
+
         <div className="flex  justify-center gap-4 flex-wrap mt-6">
           {pricingCards.map((card) => (
             <Card
@@ -104,10 +122,16 @@ export default function Home() {
                 </span>
               </CardContent>
               <CardFooter className="flex flex-col items-start gap-4">
-                <div>
+                <div className="flex flex-col gap-3">
                   {card.features.map((feature) => (
-                    <div key={feature} className="flex gap-2">
-                      <Check />
+                    <div key={feature} className="flex gap-4">
+                      <Image
+                        src="/images/tick.png"
+                        width={15}
+                        height={10}
+                        alt="check"
+                        className="object-contain"
+                      />
                       <p>{feature}</p>
                     </div>
                   ))}
@@ -122,13 +146,28 @@ export default function Home() {
             </Card>
           ))}
         </div>
+        {/* </Vortex> */}
 
         <section className="flex justify-center items-center flex-col gap-4 mt-28">
-          <h2 className="text-4xl text-center">News Room</h2>
+          <h2 className="text-4xl text-center font-bold">
+            Trusted by the best companies
+          </h2>
           <p className="text-muted-foreground text-center max-w-lg">
             Explore our insights on AI, technology, and optimizing your
             business.
           </p>
+          <div className="flex justify-center items-center gap-4">
+            {companies.map((company) => (
+              <Image
+                key={company.name}
+                src={company.image}
+                width={150}
+                height={150}
+                alt="Logo"
+                className="max-w-lg object-contain"
+              />
+            ))}
+          </div>
         </section>
         {/* <section className="md:grid-cols-3 grid-cols-1 grid gap-5 container mt-8">
           {posts &&
@@ -154,6 +193,9 @@ export default function Home() {
               </Link>
             ))}
         </section> */}
+        <section className="mt-28 mb-16">
+          <FeaturesSection />
+        </section>
       </main>
       <Footer />
     </div>
