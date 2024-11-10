@@ -1,10 +1,17 @@
-import { authMiddleware } from '@clerk/nextjs'
+import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
-  publicRoutes: ['/', '/auth(.*)', '/portal(.*)', '/images(.*)', '/icons(.*)'],
-  ignoredRoutes: ['/chatbot', "/favicon.ico", "/robots.txt"],
-})
+  publicRoutes: [
+    "/",
+    "/auth(.*)",
+    "/portal(.*)",
+    "/images(.*)",
+    "/icons(.*)",
+    "/test",
+  ],
+  ignoredRoutes: ["/chatbot", "/favicon.ico", "/robots.txt"],
+});
 
 export const config = {
-  matcher: ['/((?!.+.[w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
-}
+  matcher: ["/((?!.+.[w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+};

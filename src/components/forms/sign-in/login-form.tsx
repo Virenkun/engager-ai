@@ -1,19 +1,21 @@
-'use client'
-import React from 'react'
-import { useFormContext } from 'react-hook-form'
-import FormGenerator from '../form-generator'
-import { USER_LOGIN_FORM } from '@/constants/forms'
+"use client";
+import React from "react";
+import { useFormContext } from "react-hook-form";
+import FormGenerator from "../form-generator";
+import { USER_LOGIN_FORM } from "@/constants/forms";
 
-type Props = {}
+type Props = {};
 
 const LoginForm = (props: Props) => {
   const {
     register,
     formState: { errors },
-  } = useFormContext()
+  } = useFormContext();
   return (
     <>
-      <h2 className="text-gravel md:text-4xl font-bold dark:text-white">Login</h2>
+      <h2 className="text-gravel md:text-4xl font-bold dark:text-white">
+        Login into your account
+      </h2>
       <p className="text-iridium md:text-sm dark:text-white">
         You will receive a one time password
       </p>
@@ -27,7 +29,7 @@ const LoginForm = (props: Props) => {
         />
       ))}
     </>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

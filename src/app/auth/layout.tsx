@@ -1,58 +1,41 @@
-import { currentUser } from '@clerk/nextjs'
-import Image from 'next/image'
-import { redirect } from 'next/navigation'
-import React from 'react'
+import { Button } from "@/components/ui/button";
+import { HeroHighlight } from "@/components/ui/hero-highlight";
+import LampDemo from "@/components/ui/lamp";
+import { currentUser } from "@clerk/nextjs";
+import Image from "next/image";
+import { ChevronLeft } from "lucide-react";
+import { redirect } from "next/navigation";
+import React from "react";
+import Link from "next/link";
 
 type Props = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const Layout = async ({ children }: Props) => {
-  const user = await currentUser()
+  const user = await currentUser();
 
-  if (user) redirect('/dashboard')
+  if (user) redirect("/dashboard");
 
   return (
-    <div className="h-screen flex w-full justify-center">
-      <div className="w-[600px] ld:w-full flex flex-col items-start p-6">
-      <div className="flex gap-2 self-stretch my-auto text-2xl tracking-tighter text-neutral-700 dark:text-white">
-        <Image
-          src="/images/logo-ai.png"
-          alt="LOGO"
-          sizes="100vw"
-          style={{
-            width: '30px',
-            height: 'auto',
-            margin: '0px 6px',
-          }}
-          width={0}
-          height={0}
-        />
-        <span>Prosper AI</span>
+    <HeroHighlight>
+      <div className="w-full ml-8 mt-16">
+        <Link href="/">
+          <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6  text-white inline-block">
+            <span className="absolute inset-0 overflow-hidden rounded-full">
+              <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+            </span>
+            <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-2 px-4 ring-1 ring-white/10 ">
+              <ChevronLeft size={16} />
+              <span>{`Back To Home`}</span>
+            </div>
+            <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-violet-600/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
+          </button>
+        </Link>
       </div>
-        {children}
-      </div>
-      <div className="hidden lg:flex flex-1 w-full max-h-full max-w-4000px overflow-hidden relative bg-cream  flex-col pt-10 pl-24 gap-3">
-        <h2 className="text-gravel md:text-4xl font-bold">
-          Hi, I’m your AI powered sales assistant, Corinna!
-        </h2>
-        <p className="text-iridium md:text-sm mb-10">
-          Corinna is capable of capturing lead information without a form...{' '}
-          <br />
-          something never done before 😉
-        </p>
-        <Image
-          src="/images/app-ui.png"
-          alt="app image"
-          loading="lazy"
-          sizes="30"
-          className="absolute shrink-0 !w-[1600px] top-48"
-          width={0}
-          height={0}
-        />
-      </div>
-    </div>
-  )
-}
+      <div className="flex flex-1 justify-center items-center">{children}</div>
+    </HeroHighlight>
+  );
+};
 
-export default Layout
+export default Layout;
