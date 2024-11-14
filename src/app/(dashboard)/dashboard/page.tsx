@@ -22,6 +22,8 @@ import { CircleDollarSign } from "lucide-react";
 import { CalendarClock } from "lucide-react";
 import { Banknote } from "lucide-react";
 import { Wallet } from "lucide-react";
+import { TourGuide } from "@/components/tour-guide/tour-guide";
+import { set } from "date-fns";
 
 type Props = {};
 
@@ -32,6 +34,11 @@ const Page = (props: Props) => {
   const [plan, setPlan] = React.useState<any>(null);
   const [transactions, setTransactions] = React.useState<any>(null);
   const [products, setProducts] = React.useState<number | null>(null);
+  const [loded, setLoded] = React.useState<boolean>(false);
+
+  useEffect(() => {
+    setLoded(true);
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -52,8 +59,17 @@ const Page = (props: Props) => {
     fetchData();
   }, []);
 
+  if (!loded) {
+    return null;
+  }
+
   return (
     <>
+      <TourGuide
+        start={true}
+        handleStartTour={() => {}}
+        handleEndTour={() => {}}
+      />
       <InfoBar />
       <div className="overflow-y-auto w-full chat-window flex-1 h-0">
         <div className="flex gap-5 flex-wrap">
