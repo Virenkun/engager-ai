@@ -1,5 +1,4 @@
 "use client";
-import { onGetBlogPosts } from "@/services/landing";
 import NavBar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,62 +11,49 @@ import {
 } from "@/components/ui/card";
 import { pricingCards } from "@/constants/landing-page";
 import clsx from "clsx";
-import { ArrowRightCircleIcon, Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import parse from "html-react-parser";
-import { getMonthName } from "@/lib/utils";
 import Footer from "@/components/footer";
 import { useAuth } from "@clerk/nextjs";
-import { use, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Vortex } from "@/components/ui/vortex";
 import { companies } from "@/constants/companies";
 import { FeaturesSection } from "@/components/hero/features-section";
+import { CompanyScroller } from "@/components/dashboard/company-scroller";
+import Pricing from "@/components/dashboard/pricing";
+import { MacbookScroll } from "@/components/ui/macbook-scroll";
+import TypingAnimation from "@/components/ui/typing-animation";
 
 export default function Home() {
-  const { isLoaded, userId, sessionId, getToken } = useAuth();
+  const { userId } = useAuth();
   const router = useRouter();
-
   useEffect(() => {
     if (userId) {
       router.push("/dashboard");
     }
-  }, [userId]);
-  // console.log("userId", userId);
-
-  // const posts:
-  //   | {
-  //       id: string;
-  //       title: string;
-  //       image: string;
-  //       content: string;
-  //       createdAt: Date;
-  //     }[]
-  //   | undefined = await onGetBlogPosts();
-  // console.log(posts);
+  }, [router, userId]);
   return (
     <div>
       <main>
         <NavBar />
-        {/* <Vortex
-          backgroundColor="transparent"
-          className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-90vh"
-        > */}
         <section>
           <div className="flex items-center justify-center flex-col mt-[80px] gap-4 ">
-            {/* <span className="text-white bg-violet-800 px-4 py-2 rounded-full text-sm">
-                Turn Conversations into Conversions with ProsperAI.
-              </span> */}
             <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[2px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 mb-3">
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
               <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full dark:bg-slate-950 bg-white px-4 py-1 text-sm font-medium dark:text-white text-black backdrop-blur-3xl">
                 Turn Conversations into Conversions with ProsperAI
               </span>
             </button>
-            <div className="text-8xl font-bold text-violet-950 dark:text-white">
+            {/* <div className="text-8xl font-bold text-violet-950 dark:text-white">
               Engager AI
-            </div>
+            </div> */}
+            {/* <div className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-8xl font-bold leading-none tracking-tighter text-transparent p-4">
+              Engager AI
+            </div> */}
+            <TypingAnimation
+              className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-8xl font-bold leading-none tracking-tighter text-transparent p-4"
+              text="Engager AI"
+            />
             <p className="text-center max-w-[500px] mb-4">
               Engager AI is an AI-powered sales platform designed to streamline
               outreach, nurture leads, and drive revenue growth by turning every
@@ -76,12 +62,27 @@ export default function Home() {
             <Button className="bg-violet-700 text-white px-4 font-medium hover:bg-violet-800 mb-3">
               Start For Free
             </Button>
-            <Image
+            {/* <Image
               src="/images/iphonecorinna.png"
               width={400}
               height={100}
               alt="Logo"
               className="max-w-lg object-contain"
+            /> */}
+          </div>
+        </section>
+
+        <section>
+          <div className="overflow-hidden dark:bg-black bg-inherit w-full">
+            <MacbookScroll
+              title={
+                <span>
+                  Get Access to Insightful Dashboard
+                  <br /> With Metrics.
+                </span>
+              }
+              src={`/images/hero.png`}
+              showGradient={false}
             />
           </div>
         </section>
@@ -148,7 +149,7 @@ export default function Home() {
         </div>
         {/* </Vortex> */}
 
-        <section className="flex justify-center items-center flex-col gap-4 mt-28">
+        {/* <section className="flex justify-center items-center flex-col gap-4 mt-28">
           <h2 className="text-4xl text-center font-bold">
             Trusted by the best companies
           </h2>
@@ -168,6 +169,20 @@ export default function Home() {
               />
             ))}
           </div>
+        </section> */}
+        <section className="flex justify-center items-center flex-col gap-4 my-60">
+          <h2 className="text-4xl text-center font-bold">
+            Trusted by the best companies
+          </h2>
+          <p className="text-muted-foreground text-center max-w-lg">
+            Explore our insights on AI, technology, and optimizing your
+            business.
+          </p>
+          <CompanyScroller />
+        </section>
+
+        <section className="flex justify-center items-center flex-col gap-4 mt-28">
+          <Pricing />
         </section>
         {/* <section className="md:grid-cols-3 grid-cols-1 grid gap-5 container mt-8">
           {posts &&

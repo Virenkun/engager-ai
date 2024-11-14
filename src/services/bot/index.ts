@@ -5,15 +5,13 @@ import { extractEmailsFromString, extractURLfromString } from "@/lib/utils";
 import { onRealTimeChat } from "../conversation";
 import { clerkClient } from "@clerk/nextjs";
 import { onMailer } from "../mailer";
-import OpenAi from "openai";
-import axios from "axios";
+import Groq from "groq-sdk";
 
-const azureOpenAiEndpoint =
-  "https://prosper-open-ai.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-08-01-preview";
-
-const openai = new OpenAi({
-  apiKey: process.env.OPEN_AI_KEY,
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY, // Update your GROQ API key here
 });
+
+const MODEL: string = process.env.GROQ_MODEL || "llama-3.1-70b-versatile";
 
 export const onStoreConversations = async (
   id: string,
@@ -209,11 +207,12 @@ export const onAiChatBotAssistant = async (
           author
         );
 
-        const chatCompletion = await axios.post(azureOpenAiEndpoint, {
-          messages: [
-            {
-              role: "assistant",
-              content: `
+        const chatCompletion = await groq.chat.completions.create(
+          {
+            messages: [
+              {
+                role: "assistant",
+                content: `
               You will get an array of questions that you must ask the customer. 
               
               Progress the conversation using those questions. 
@@ -233,31 +232,36 @@ export const onAiChatBotAssistant = async (
               if the customer says something out of context or inapporpriate. Simply say this is beyond you and you will get a real user to continue the conversation. And add a keyword (realtime) at the end.
 
               if the customer agrees to book an appointment send them this link http://localhost:3000/portal/${id}/appointment/${
-                checkCustomer?.customer[0].id
-              }
+                  checkCustomer?.customer[0].id
+                }
 
               if the customer wants to buy a product redirect them to the payment page http://localhost:3000/portal/${id}/payment/${
-                checkCustomer?.customer[0].id
-              }
+                  checkCustomer?.customer[0].id
+                }
           `,
-            },
-            ...chat,
-            {
-              role: "user",
-              content: message,
-            },
-          ]},
+              },
+              ...chat,
+              {
+                role: "user",
+                content: message,
+              },
+            ],
+            model: MODEL,
+            temperature: 1,
+            max_tokens: 1024,
+            top_p: 1,
+            stream: false,
+          },
           // model: "gpt-3.5-turbo",
           {
             headers: {
               "Content-Type": "application/json",
-              "api-key": process.env.OPEN_AI_KEY
-            }
-        });
+              "api-key": process.env.OPEN_AI_KEY,
+            },
+          }
+        );
 
-        if (
-          chatCompletion.data.choices[0].message.content?.includes("(realtime)")
-        ) {
+        if (chatCompletion.choices[0].message.content?.includes("(realtime)")) {
           const realtime = await client.chatRoom.update({
             where: {
               id: checkCustomer?.customer[0].chatRoom[0].id,
@@ -270,7 +274,7 @@ export const onAiChatBotAssistant = async (
           if (realtime) {
             const response = {
               role: "assistant",
-              content: chatCompletion.data.choices[0].message.content.replace(
+              content: chatCompletion.choices[0].message.content.replace(
                 "(realtime)",
                 ""
               ),
@@ -313,7 +317,7 @@ export const onAiChatBotAssistant = async (
 
         if (chatCompletion) {
           const generatedLink = extractURLfromString(
-            chatCompletion.data.choices[0].message.content as string
+            chatCompletion.choices[0].message.content as string
           );
 
           if (generatedLink) {
@@ -335,7 +339,7 @@ export const onAiChatBotAssistant = async (
 
           const response = {
             role: "assistant",
-            content: chatCompletion.data.choices[0].message.content,
+            content: chatCompletion.choices[0].message.content,
           };
 
           await onStoreConversations(
@@ -348,36 +352,44 @@ export const onAiChatBotAssistant = async (
         }
       }
       console.log("No customer");
-      const chatCompletion = await axios.post(azureOpenAiEndpoint,  {
-        messages: [
-          {
-            role: "assistant",
-            content: `
+      const chatCompletion = await groq.chat.completions.create(
+        {
+          messages: [
+            {
+              role: "assistant",
+              content: `
             You are a highly knowledgeable and experienced sales representative for a ${chatBotDomain.name} that offers a valuable product or service. Your goal is to have a natural, human-like conversation with the customer in order to understand their needs, provide relevant information, and ultimately guide them towards making a purchase or redirect them to a link if they havent provided all relevant information.
             Right now you are talking to a customer for the first time. Start by giving them a warm welcome on behalf of ${chatBotDomain.name} and make them feel welcomed.
 
             Your next task is lead the conversation naturally to get the customers email address. Be respectful and never break character
 
           `,
+            },
+            ...chat,
+            {
+              role: "user",
+              content: message,
+            },
+          ],
+          // model: "gpt-3.5-turbo",
+          model: MODEL,
+          temperature: 1,
+          max_tokens: 1024,
+          top_p: 1,
+          stream: false,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "api-key": process.env.OPEN_AI_KEY,
           },
-          ...chat,
-          {
-            role: "user",
-            content: message,
-          },
-        ],
-        model: "gpt-3.5-turbo",
-      }, {
-        headers: {
-          "Content-Type": "application/json",
-          "api-key": process.env.OPEN_AI_KEY
         }
-      });
+      );
 
       if (chatCompletion) {
         const response = {
           role: "assistant",
-          content: chatCompletion.data.choices[0].message.content,
+          content: chatCompletion.choices[0].message.content,
         };
 
         return { response };

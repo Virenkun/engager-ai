@@ -105,7 +105,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
           triggers={BOT_TABS_MENU}
           className=" bg-transparent border-[1px] border-border m-2"
         >
-          <TabsContent value="chat">
+          <TabsContent value="Chat">
             <Separator orientation="horizontal" />
             <div className="flex flex-col h-full">
               <div
@@ -151,7 +151,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
             </div>
           </TabsContent>
 
-          <TabsContent value="helpdesk">
+          <TabsContent value="Helpdesk">
             <div className="h-[485px] overflow-y-auto overflow-x-hidden p-4 flex flex-col gap-4">
               <div>
                 <CardTitle>Help Desk</CardTitle>
