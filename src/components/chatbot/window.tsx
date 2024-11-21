@@ -70,7 +70,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
   ) => {
     console.log(errors);
     return (
-      <div className="h-[670px] w-[450px] flex flex-col bg-white dark:bg-white rounded-xl mr-[80px] border-[1px] overflow-hidden">
+      <div className="h-[770px] w-[470px] flex flex-col bg-white dark:bg-black rounded-xl mr-[80px] border-[1px] overflow-hidden">
         <div className="flex justify-between px-4 pt-4">
           <div className="flex gap-2">
             <Avatar className="w-20 h-20">
@@ -78,10 +78,10 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <div className="flex items-start flex-col">
-              <h3 className="text-lg font-bold leading-none dark:text-black">
+              <h3 className="text-lg font-bold leading-none dark:text-white">
                 Sales Rep
               </h3>
-              <p className="text-sm dark:text-black">
+              <p className="text-sm dark:text-white">
                 {domainName.split(".com")[0]}
               </p>
               {realtimeMode?.mode && (
@@ -113,7 +113,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
                   background: theme || "",
                   color: textColor || "",
                 }}
-                className="px-3 flex h-[400px] flex-col py-5 gap-3 chat-window overflow-y-auto"
+                className="px-3 flex h-[470px] flex-col py-5 gap-3 chat-window overflow-y-auto"
                 ref={ref}
               >
                 {chats.map((chat, key) => (
@@ -123,13 +123,13 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
               </div>
               <form
                 onSubmit={onChat}
-                className="flex px-3 py-1 flex-col flex-1 bg-white"
+                className="flex px-3 py-1 items-center gap-2 flex-1 bg-white dark:bg-black"
               >
-                <div className="flex justify-between">
+                <div className="flex justify-between flex-1">
                   <Input
                     {...register("content")}
                     placeholder="Type your message..."
-                    className="focus-visible:ring-0 flex-1 p-4 focus-visible:ring-offset-0 bg-white border-black rounded-xl outline-none dark:text-black mr-2"
+                    className="focus-visible:ring-0 flex-1 p-4 focus-visible:ring-offset-0 bg-white dark:bg-gray-900 border-black rounded-xl outline-none dark:text-black mr-2"
                   />
                   <Button
                     type="submit"

@@ -59,29 +59,47 @@ type TABS_MENU_PROPS = {
 
 export const TABS_MENU: TABS_MENU_PROPS[] = [
   {
-    label: "Unread",
+    label: "unread",
     icon: <MailPlus />,
   },
   {
-    label: "All",
+    label: "all",
     icon: <Mails />,
   },
   {
-    label: "Expired",
+    label: "expired",
     icon: <CalendarX2 />,
   },
   {
-    label: "Starred",
+    label: "starred",
     icon: <Star />,
+  },
+];
+
+export const DOMAIN_MENU: TABS_MENU_PROPS[] = [
+  {
+    label: "settings",
+  },
+  {
+    label: "chatbot",
+  },
+  {
+    label: "training",
+  },
+  {
+    label: "products",
+  },
+  {
+    label: "playground",
   },
 ];
 
 export const HELP_DESK_TABS_MENU: TABS_MENU_PROPS[] = [
   {
-    label: "Help Desk",
+    label: "help desk",
   },
   {
-    label: "Questions",
+    label: "questions",
   },
 ];
 

@@ -25,9 +25,12 @@ function NavBar() {
       <NavigationItems />
       <div className="flex items-center justify-center gap-6">
         <ThemeToggle />
-        <button>Log In</button>
+        <Link href="/auth/sign-in" className="text-neutral-700 dark:text-white">
+          <button>Log In</button>
+        </Link>
+
         <Link
-          href="/dashboard"
+          href="/auth/sign-up"
           className="bg-violet-700 px-4 py-2 rounded-sm text-white font-medium"
         >
           Free Trial
