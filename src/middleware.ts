@@ -8,6 +8,7 @@ export default authMiddleware({
     "/images(.*)",
     "/icons(.*)",
     "/test",
+    "/pricing",
   ],
   ignoredRoutes: ["/chatbot", "/icon.png", "/robots.txt"],
 });

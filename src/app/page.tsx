@@ -37,9 +37,11 @@ export default function Home() {
               className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-8xl font-bold leading-none tracking-tighter text-transparent p-4"
               text="Engager AI"
             />
-            <SparklesText text="Turn Conversations into" />
-            <SparklesText text="Conversions with Engager AI" />
-            <p className="text-center max-w-[700px] mb-10 text-lg">
+            <div className="mt-6 flex flex-col justify-center items-center">
+              <SparklesText text="Turn Conversations into" />
+              <SparklesText text="Conversions with Engager AI" />
+            </div>
+            <p className="text-center max-w-[900px] mb-10 text-xl mt-6">
               Engager AI is an AI-powered sales platform designed to streamline
               outreach, nurture leads, and drive revenue growth by turning every
               interaction into a strategic opportunity.
@@ -50,7 +52,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section>
+        <section className="mt-52">
           <div className="overflow-hidden dark:bg-black bg-inherit w-full">
             <MacbookScroll
               title={

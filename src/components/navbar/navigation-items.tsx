@@ -95,13 +95,25 @@ export function NavigationItems() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction" icon="/images/bulb.png">
+              <ListItem
+                href="/docs"
+                title="Introduction"
+                icon="/images/bulb.png"
+              >
                 Re-usable components built using Radix UI and Tailwind CSS.
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation" icon="/images/download.png">
+              <ListItem
+                href="/docs/installation"
+                title="Installation"
+                icon="/images/download.png"
+              >
                 How to install dependencies and structure your app.
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Try It" icon="/images/play-button.png">
+              <ListItem
+                href="/docs/primitives/typography"
+                title="Try It"
+                icon="/images/play-button.png"
+              >
                 Styles for headings, paragraphs, lists...etc
               </ListItem>
             </ul>
@@ -128,6 +140,13 @@ export function NavigationItems() {
           <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Documentation
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/pricing" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Pricing
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -161,7 +180,9 @@ const ListItem = React.forwardRef<
               />
             </div>
             <div className="flex flex-col gap-2">
-              <div className="text-sm font-medium leading-none text-black dark:text-white">{title}</div>
+              <div className="text-sm font-medium leading-none text-black dark:text-white">
+                {title}
+              </div>
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
