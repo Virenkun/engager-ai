@@ -148,6 +148,34 @@ const config = {
             "background-position": "0% 0%",
           },
         },
+        pulse: {
+          "0%, 100%": {
+            boxShadow: "0 0 0 0 var(--pulse-color)",
+          },
+          "50%": {
+            boxShadow: "0 0 0 8px var(--pulse-color)",
+          },
+        },
+        wobble1: {
+          "0%, 100%": {
+            transform: "translateY(0%) scale(1)",
+            opacity: "1",
+          },
+          "50%": {
+            transform: "translateY(-66%) scale(0.65)",
+            opacity: "0.8",
+          },
+        },
+        wobble2: {
+          "0%, 100%": {
+            transform: "translateY(0%) scale(1)",
+            opacity: "1",
+          },
+          "50%": {
+            transform: "translateY(66%) scale(0.65)",
+            opacity: "0.8",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -159,6 +187,10 @@ const config = {
         marquee: "marquee var(--duration) infinite linear",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         shine: "shine var(--duration) infinite linear",
+        pulse: "pulse var(--duration) ease-out infinite",
+        "spin-slow": "spin 2.5s linear infinite",
+        wobble1: "wobble1 0.8s infinite ease-in-out",
+        wobble2: "wobble2 0.8s infinite ease-in-out",
       },
     },
   },

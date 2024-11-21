@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Moon, Sun } from "lucide-react";
+import { BadgeCheck, Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Pricing() {
-  const [isAnnual, setIsAnnual] = useState(true);
+  const [isAnnual, setIsAnnual] = useState(false);
 
   const plans = [
     {
@@ -101,7 +101,7 @@ export default function Pricing() {
             checked={!isAnnual}
             onCheckedChange={(checked) => setIsAnnual(!checked)}
           />
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-4">
             <span
               className={
                 !isAnnual ? "text-foreground" : "text-muted-foreground"
@@ -109,7 +109,7 @@ export default function Pricing() {
             >
               Monthly
             </span>
-            <span className="bg-yellow-500/20 text-yellow-500 text-xs px-2 py-0.5 rounded-full">
+            <span className="bg-yellow-500/20 font-medium darK:text-yellow-500 text-yellow-600  text-xs px-3 py-2 rounded-full border border-yellow-400">
               2 MONTHS FREE
             </span>
           </div>
@@ -120,14 +120,12 @@ export default function Pricing() {
             <Card
               key={plan.name}
               className={`bg-card ${
-                plan.name === "Premium"
-                  ? "border-yellow-500/50"
-                  : "border-border"
+                plan.name === "Premium" ? "border-violet-600" : "border-border"
               }`}
             >
               <CardHeader>
                 <CardTitle className="text-xl">{plan.name}</CardTitle>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm font-semibold text-muted-foreground">
                   {plan.description}
                 </p>
               </CardHeader>
@@ -185,9 +183,9 @@ export default function Pricing() {
                   {plan.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-center gap-2 text-sm"
+                      className="flex items-center gap-2 text-base font-medium"
                     >
-                      <Check className="w-4 h-4 text-green-500" />
+                      <BadgeCheck className="w-5 h-5 text-green-500" />
                       {feature}
                     </li>
                   ))}

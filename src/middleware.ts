@@ -9,7 +9,7 @@ export default authMiddleware({
     "/icons(.*)",
     "/test",
   ],
-  ignoredRoutes: ["/chatbot", "/favicon.ico", "/robots.txt"],
+  ignoredRoutes: ["/chatbot", "/icon.png", "/robots.txt"],
 });
 
 export const config = {
