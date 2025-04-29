@@ -1,6 +1,6 @@
 # EngagerAI Chatbot Integration
 
-**ProsperAI** is a smart, AI-powered chatbot designed to help businesses engage website visitors, gather essential contact information, send automated emails, and drive subscriptions. This SaaS chatbot is easy to integrate into any website, enabling businesses to connect with visitors 24/7 and convert engagement into valuable leads.
+**EngagerAI** is a smart, AI-powered chatbot designed to help businesses engage website visitors, gather essential contact information, send automated emails, and drive subscriptions. This SaaS chatbot is easy to integrate into any website, enabling businesses to connect with visitors 24/7 and convert engagement into valuable leads.
 
 ---
 
