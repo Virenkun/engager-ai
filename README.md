@@ -1,4 +1,4 @@
-# ProsperAI Chatbot Integration
+# EngagerAI Chatbot Integration
 
 **ProsperAI** is a smart, AI-powered chatbot designed to help businesses engage website visitors, gather essential contact information, send automated emails, and drive subscriptions. This SaaS chatbot is easy to integrate into any website, enabling businesses to connect with visitors 24/7 and convert engagement into valuable leads.
 
@@ -51,25 +51,4 @@ Access the ProsperAI dashboard to customize chatbot appearance, tone, and respon
 
 Once integrated, the chatbot will appear on your website and begin engaging visitors automatically. It will capture essential contact information, email it to your sales team, and redirect interested users to the subscription page.
 
----
-
-## API Reference
-
-- **onLeadCapture**: Triggered when a lead’s contact information is collected.
-- **onRedirect**: Triggered when the user expresses interest in a subscription, redirecting them to the designated URL.
-
----
-
-## Support
-
-For any issues, contact our support team at [support@prosperai.com](mailto:support@prosperai.com).
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-ProsperAI - **Turn Conversations into Conversions!**
+EngagerAI - **Turn Conversations into Conversions!**
