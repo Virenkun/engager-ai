@@ -17,20 +17,20 @@
 ## Quick Start
 
 ### Step 1: Get API Credentials
-Sign up for ProsperAI and obtain your API key and client ID for secure integration.
+Sign up for EngagerAI and obtain your API key and client ID for secure integration.
 
 ### Step 2: Integrate the Chatbot
 1. **Add Script**: Copy the following script and add it to your website’s HTML within the `<head>` or `<body>` section:
 
     ```html
-    <script src="https://cdn.prosperai.com/chatbot.js" data-client-id="YOUR_CLIENT_ID"></script>
+    <script src="https://cdn.EngagerAI.com/chatbot.js" data-client-id="YOUR_CLIENT_ID"></script>
     ```
 
 2. **Initialize Chatbot**: Add the following code snippet to configure the chatbot.
 
     ```javascript
     <script>
-      ProsperAIChatbot.init({
+      EngagerAIChatbot.init({
           apiKey: "YOUR_API_KEY",
           onLeadCapture: (leadInfo) => {
               console.log("Lead captured:", leadInfo);
@@ -43,7 +43,7 @@ Sign up for ProsperAI and obtain your API key and client ID for secure integrati
     ```
 
 ### Step 3: Customize Chatbot Settings (Optional)
-Access the ProsperAI dashboard to customize chatbot appearance, tone, and responses.
+Access the EngagerAI dashboard to customize chatbot appearance, tone, and responses.
 
 ---
 
